@@ -2,7 +2,7 @@
 include '../database/DBController.php';
 if(isset($_POST['customer'])){
 	$employee_id = $_POST['employee_id'];
-	$user = $_SESSION['username'];
+	$user = $_POST['user'];
 	$discount = $_POST['discount'];
 	$total = $_POST['totalvalue'];
 	$price = $_POST['price'];
@@ -36,10 +36,10 @@ if(isset($_POST['customer'])){
 			$sql2 = "UPDATE product_details SET quantity_stock= '$newqty' WHERE product_code='$product_id'";
 			$result2 = mysqli_query($conn, $sql2);
 
+			$query1 	= "INSERT INTO logs (username,purpose) VALUES('$user','Product sold of $qtyold stocks with barcode $product_id ')";
+			$insert 	= mysqli_query($conn,$query1);
+
 		}
-		
-		$query1 	= "INSERT INTO logs (username,purpose) VALUES('$user','Product sold of $quantity units')";
-		$insert 	= mysqli_query($conn,$query1);
 
 		for($count = 0; $count < count($product); $count++){
 			$price_clean = mysqli_real_escape_string($conn, $price[$count]);

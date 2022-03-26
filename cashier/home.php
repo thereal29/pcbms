@@ -15,6 +15,7 @@
                             ?>
 							<td  style="font-size:16px; color: #05300e; font-weight:bold;" valign="baseline">User Logged on:</td>
 							<td style="font-size:16px; color: #05300e; font-weight:bold;" valign="baseline"><p class="pt-3 ml-5"><i class="fas fa-user-shield"></i> <?php echo $job?></p></td>
+                            <input type="hidden" name="uid" id="uid" value="<?php echo $row['username'] ?>"/>
 						</tr>
 						<tr>
 							<td style="font-size:16px; color: #05300e; font-weight:bold;" valign="baseline">Date:</td>

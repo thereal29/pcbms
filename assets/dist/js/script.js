@@ -126,6 +126,7 @@ $(document).on('click','.Enter',function(){
     var quantity = [];
     var price = [];
     var employee_id = $('#eid').val();
+    var user = $('#uid').val();
     var customer = $('#customer').val();
     var discount = $('#discount').val();
 
@@ -169,7 +170,7 @@ $(document).on('click','.Enter',function(){
             $.ajax({
               url:"cashier/addsales.php",
               method:"POST",
-              data:{totalvalue:TotalValue, product:product, price:price, employee_id:employee_id, customer:customer, quantity:quantity, discount:discount},
+              data:{totalvalue:TotalValue, product:product, price:price, employee_id:employee_id, user:user, customer:customer, quantity:quantity, discount:discount},
               success: function(data){
                 //alert(data);
                 if( data == "success"){
