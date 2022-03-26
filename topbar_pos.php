@@ -6,7 +6,7 @@
 <!-- Top Navigaition for admin and admin -->
   <div class="top_nav">
       <div class="system_name" style="background: #05300e; color: #fff;">      
-      <h1 style="margin-inline-start: 0; text-align: left; margin-left:10px;">VSU PCBMS Point of Sales</h1>
+      <h1 style="margin-inline-start: 0; text-align: left; margin-left:10px;">VSUasdasd,jkasdj PCBMS Point of Sales</h1>
       </div>
   </div>
   <div class="profile2">
