@@ -23,6 +23,9 @@ Class Action {
 			$num_row = mysqli_num_rows($qry);
             $_SESSION['employee_id'] = $row['employee_id'];
 			$_SESSION['username'] = $row['username'];
+			$user = $_SESSION['username'];
+			$insert	= "INSERT INTO logs (username,purpose) VALUES('$user','User $user login')";
+ 			$logs = mysqli_query($this->db,$insert);
             if($row["type_id"] == 2){
                 $login = 2;
             }
