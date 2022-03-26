@@ -49,6 +49,17 @@ Class Action {
 		}
 	}
 	function logout(){
+		$user = $_SESSION['username'];
+		if($_SESSION['login_type'] == 2){
+			$login = 2;
+			$insert	= "INSERT INTO logs (username,purpose) VALUES('$user','User $user logout')";
+			$logs = mysqli_query($this->db,$insert);
+		}
+		if($_SESSION['login_type'] == 1){
+			$login = 1;
+			$insert	= "INSERT INTO logs (username,purpose) VALUES('$user','Admin $user logout')";
+			$logs = mysqli_query($this->db,$insert);
+		}
 		session_destroy();
 		$_SESSION = array();
 		foreach ($_SESSION as $key => $value) {
