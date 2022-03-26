@@ -23,15 +23,16 @@ Class Action {
 			$num_row = mysqli_num_rows($qry);
             $_SESSION['employee_id'] = $row['employee_id'];
 			$_SESSION['username'] = $row['username'];
+			$uid = $row['user_id'];
 			$user = $_SESSION['username'];
             if($row["type_id"] == 2){
                 $login = 2;
-				$insert	= "INSERT INTO logs (username,purpose) VALUES('$user','User $user login')";
+				$insert	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','User $user login')";
  				$logs = mysqli_query($this->db,$insert);
             }
             if($row["type_id"] == 1){
                 $login = 1;
-				$insert	= "INSERT INTO logs (username,purpose) VALUES('$user','Admin $user login')";
+				$insert	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','Admin $user login')";
  				$logs = mysqli_query($this->db,$insert);
             }
 		if($num_row > 0){
@@ -50,14 +51,15 @@ Class Action {
 	}
 	function logout(){
 		$user = $_SESSION['username'];
+		$uid = $_SESSION['login_id'];
 		if($_SESSION['login_type'] == 2){
 			$login = 2;
-			$insert	= "INSERT INTO logs (username,purpose) VALUES('$user','User $user logout')";
+			$insert	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','User $user logout')";
 			$logs = mysqli_query($this->db,$insert);
 		}
 		if($_SESSION['login_type'] == 1){
 			$login = 1;
-			$insert	= "INSERT INTO logs (username,purpose) VALUES('$user','Admin $user logout')";
+			$insert	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','Admin $user logout')";
 			$logs = mysqli_query($this->db,$insert);
 		}
 		session_destroy();

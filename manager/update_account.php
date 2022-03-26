@@ -102,12 +102,11 @@
                                 <div class="form-group col-md-6">
                                     <br>
                                     <label class="col-sx-4 control-label" for="password ">Password</label>
-                                    <?php if(!empty($fetch['password'])){
-                                        echo '<input id="password" name="password" type="text" maxlength="12" class="form-control input-xs" value="" required>';
-                                    }else{
-                                        echo '<input id="password" name="password" type="text" placeholder="Password" maxlength="12" class="form-control input-xs" value="" required>';
-                                    } ?>
-                                    <label style="font-size:10px"><?php echo !empty($fetch['password']) ? "Leave this blank if you dont want to change the password":'' ?></label>
+                                    <?php if(!empty($fetch['password'])){?>
+                                        <input id="password" name="password" type="text" maxlength="12" class="form-control input-xs" value="<?php echo $fetch['password']?>" onfocus="this.value=''">
+                                   <?php }else{?>
+                                        <input id="password" name="password" type="text" placeholder="Password" maxlength="12" class="form-control input-xs" value="" required>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

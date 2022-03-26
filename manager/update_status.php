@@ -7,6 +7,7 @@
             <form action="index.php?page=update" class="form-horizontal" method="POST">
                 <input type="hidden" name="id" value="<?php echo $fetch['item_id']; ?>" />
                 <input type="hidden" name="status" value="<?php echo $fetch['status']; ?>" />
+                <input type="hidden" name="name" value="<?php echo $fetch['product_name']; ?>" />
                     <div class="modal-body">
                         <?php 
                         if($fetch['status']=="To Deliver")

@@ -3,6 +3,8 @@ ob_start();
 include 'database/DBController.php';
 if(isset($_POST['addEmployee']))
 {
+    $user = $_SESSION['username'];
+	$uid = $_SESSION['login_id'];
     $fname = $_POST['firstname'];
     $lname = $_POST['lastname'];
     $mname = $_POST['middlename'];
@@ -33,6 +35,8 @@ if(isset($_POST['addEmployee']))
         (user_id, employee_id, username, password, type_id)
         VALUES (Null,(SELECT MAX(employee_id) FROM employee),'','','$jobb' )";
         if (mysqli_query($conn, $sql3)) {
+            $query1 	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','Added $fname, $lname as Employee')";
+            $insert 	= mysqli_query($conn,$query1);
             header("Location: index.php?page=employee&status=added");
         } else {
             header("Location: index.php?page=employee&status=fail_added");
@@ -44,10 +48,14 @@ if(isset($_POST['addCustomer']))
     $fname = $_POST['firstname'];
     $lname = $_POST['lastname'];
     $phone = $_POST['phonenumber'];
+    $user = $_SESSION['username'];
+	$uid = $_SESSION['login_id'];
         $sql = "INSERT INTO customer
         (cust_id, firstname, lastname, phone_number)
         VALUES (Null,'$fname', '$lname','$phone')";
         if (mysqli_query($conn, $sql)) {
+            $query1 	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','Added $fname, $lname as Customer')";
+            $insert 	= mysqli_query($conn,$query1);
             header("Location: index.php?page=customer&status=added");
         } else {
             header("Location: index.php?page=customer&status=fail_added");
@@ -56,6 +64,8 @@ if(isset($_POST['addCustomer']))
 }
 if(isset($_POST['addSupplier']))
 {
+    $user = $_SESSION['username'];
+	$uid = $_SESSION['login_id'];
     $cname = $_POST['compname'];
     $phone = $_POST['phonenumber'];
     $prov = $_POST['province'];
@@ -72,6 +82,8 @@ if(isset($_POST['addSupplier']))
         (supplier_id, company_name, phone_number, location_id)
         VALUES (Null,'$cname','$phone',(SELECT MAX(location_id) FROM location))";
         if (mysqli_query($conn, $sql2)) {
+            $query1 	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','Added $cname as Supplier')";
+            $insert 	= mysqli_query($conn,$query1);
             header("Location: index.php?page=supplier&status=added");
         } else {
             header("Location: index.php?page=supplier&status=fail_added");
@@ -80,6 +92,8 @@ if(isset($_POST['addSupplier']))
 }
 if(isset($_POST['addProduct']))
 {
+    $user = $_SESSION['username'];
+	$uid = $_SESSION['login_id'];
     $pname = $_POST['prodname'];
     $pprice = $_POST['pur_price'];
     $markup = $pprice * 0.20;
@@ -113,6 +127,8 @@ if(isset($_POST['addProduct']))
         (item_id, d_code, product_code, product_id, purchase_unit_price, expiry_date, quantity_stock, date_stock_in, selling_unit_price)
         VALUES (Null,(SELECT MAX(d_code) FROM product_delivery),'$code',(SELECT MAX(product_id) FROM product),'$pprice','$exdate','$qty', '' ,'$sellP')";
         if (mysqli_query($conn, $sql3)) {
+            $query1 	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','Ordered $qty $unit of $pname product')";
+            $insert 	= mysqli_query($conn,$query1);
             header("Location: index.php?page=prod_purchase&status=added");
         } else {
             header("Location: index.php?page=prod_purchase&status=fail_added");

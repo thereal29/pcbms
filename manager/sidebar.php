@@ -34,6 +34,7 @@
       </div>
       <div class="item"><a href="./index.php?page=inventory" class="<?php if($_GET['page'] == 'inventory'){echo 'current';} ?>"><i class="fas fas fa-book"></i>Inventory</a></div>
       <div class="item"><a href="./index.php?page=sales" class="<?php if($_GET['page'] == 'sales'){echo 'current';} ?>"><i class='bx bx-transfer-alt'></i>Product Sales</a></div>
+      <div class="item"><a href="./index.php?page=logs" class="<?php if($_GET['page'] == 'logs'){echo 'current';} ?>"><i class="fas fa-address-book"></i>Activity Log</a></div>
       <div class="item">
         <a href="./index.php?page=accounts" class="sub-btn <?php if(($_GET['page'] == 'accounts')){echo 'current';} ?>"><i class='bx bxs-user-account'></i>Accounts</i></a>
       </div>
