@@ -23,6 +23,7 @@ Class Action {
 			$num_row = mysqli_num_rows($qry);
             $_SESSION['employee_id'] = $row['employee_id'];
 			$_SESSION['username'] = $row['username'];
+			$_SESSION['password'] = $row['password'];
 			$uid = $row['user_id'];
 			$user = $_SESSION['username'];
             if($row["type_id"] == 2){
@@ -69,5 +70,52 @@ Class Action {
 		}
 		header("location:login.php");
 		
+	}
+	function switchPOS(){
+		$type2 = array("","manager","cashier");
+		$qry = $this->db->query("SELECT * FROM `users`, `type` WHERE `users`.`username` = '".$_SESSION['username']."' AND `users`.`type_id` = `type`.`type_id`"); 
+			$row= mysqli_fetch_array($qry, MYSQLI_ASSOC);
+			$num_row = mysqli_num_rows($qry);
+            $_SESSION['employee_id'] = $row['employee_id'];
+			$_SESSION['username'] = $row['username'];
+			$uid = $row['user_id'];
+			$user = $_SESSION['username'];
+            if($row["type_id"] == 1){
+                $login = 2;
+				$insert	= "INSERT INTO dtr (user_id,username,purpose) VALUES('$uid','$user','Admin $user switch to POS')";
+ 				$logs = mysqli_query($this->db,$insert);
+            }
+		if($num_row > 0){
+			$_SESSION['login_view_folder'] = $type2[$login].'/';
+			header('location: ./index.php?page=home');
+			
+		}
+		else{
+			echo 'false';
+		}
+
+	}
+	function switchAdmin(){
+		$type2 = array("","manager","cashier");
+		$qry = $this->db->query("SELECT * FROM `users`, `type` WHERE `users`.`username` = '".$_SESSION['username']."' AND `users`.`type_id` = `type`.`type_id`"); 
+			$row= mysqli_fetch_array($qry, MYSQLI_ASSOC);
+			$num_row = mysqli_num_rows($qry);
+			$_SESSION['employee_id'] = $row['employee_id'];
+			$_SESSION['username'] = $row['username'];
+			$uid = $row['user_id'];
+			$user = $_SESSION['username'];
+			if($row["type_id"] == 1){
+				$login = 1;
+				$insert	= "INSERT INTO dtr (user_id,username,purpose) VALUES('$uid','$user','Admin $user switch to Store Management')";
+				 $logs = mysqli_query($this->db,$insert);
+			}
+		if($num_row > 0){
+			$_SESSION['login_view_folder'] = $type2[$login].'/';
+			header('location: ./index.php?page=home');
+			
+		}
+		else{
+			echo 'false';
+		}
 	}
 }

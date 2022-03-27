@@ -1,16 +1,16 @@
 <div class="wrapper">
     <div class="card_b">
         <div class="card-header">
-            <strong><i class="bx bx-data"></i>  Product Sales Data</strong>
+            <strong>RECEIPT No. <?php echo $_GET['id'] ?></strong>
         </div>
         <div class="card-body">
             <table id="datatableid" class="table table-bordered table-striped " style="width: 100%;">
                 <thead>
                     <tr>
-                        <th>Receipt Number</th>
+                        <th>Barcode</th>
                         <th>Product Name</th>
                         <th>Quantity</th>
-                        <th>Discount</th>
+                        <th>Unit</th>
                         <th>Price(₱)</th>
                     </tr>
                 </thead>
@@ -21,19 +21,19 @@
                 ?>
                 <tr>
                     <td style="width: 15%">
-                        <?php echo $fetch['receipt_no'] ?>
+                        <?php echo $fetch['product_code'] ?>
                     </td>
-                    <td style="width: 20%">
+                    <td style="width: 30%">
                         <?php echo $fetch['product_name']?>      
                     </td>
-                    <td style="width: 20%">
+                    <td style="width: 15%">
+                        <?php echo $fetch['qty']?>      
+                    </td>
+                    <td style="width: 15%">
                     <?php if( $fetch['qty'] > 1)
                         { $s='s';
                         }else{ $s='';} ?>
-                        <?php echo $fetch['qty'].' '.$fetch['unit'].''.$s ?>    
-                    </td>
-                    <td style="width: 15%">
-                    <?php echo $fetch['discount'] ?>%     
+                        <?php echo $fetch['unit'].''.$s ?>    
                     </td>
                     <td style="width: 15%">
                     ₱ <?php echo $fetch['price']?>        

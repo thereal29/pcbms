@@ -108,7 +108,7 @@
                                         <div class="panel-body">
                                             <div class="list-group">
                                                 <?php 
-                                                    $query = "SELECT product_name, quantity_stock, unit FROM product, product_details group by product.product_id order by product.product_id  DESC LIMIT 10";
+                                                    $query = "SELECT prod.product_name, p.quantity_stock, prod.unit FROM product prod join product_details p on p.product_id=prod.product_id join product_delivery pd on pd.d_code = p.d_code where pd.status = 'Delivered' group by prod.product_id order by p.date_stock_in  DESC LIMIT 10";
                                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                                                     while ($row = mysqli_fetch_array($result)) {
                                                         if( $row['quantity_stock'] > 1)

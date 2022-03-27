@@ -234,6 +234,7 @@ function out(){
         }
     })
 };
+
 setInterval(function(){
 	total();
 }, 500);

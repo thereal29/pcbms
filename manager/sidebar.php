@@ -49,6 +49,8 @@
       <div class="item">
         <a href="./index.php?page=accounts" class="sub-btn <?php if(($_GET['page'] == 'accounts')){echo 'current';} ?>"><i class='bx bxs-user-account'></i>Accounts</i></a>
       </div>
+      <div class="item">
+      </div>
     </div>
     <div class="profile_content">
       <div class="profile">

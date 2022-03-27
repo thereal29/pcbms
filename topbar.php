@@ -7,4 +7,7 @@
       <h1>VSU Pasalubong Center Business Management System</h1>
       </div>
   </div>
+  <div class="profile2">
+      <i class="fas fa-user-tag" onclick="switchPOS();" id="log_out2" style="cursor: pointer;"></i>
+</div>
   <!-- Page -->

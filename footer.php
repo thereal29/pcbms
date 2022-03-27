@@ -150,3 +150,33 @@ window.onload = function() {
     swal("","Deleting Data Failed!","warning");
   }
 </script>
+<script>
+  function switchPOS(){
+    swal({
+      title: "Switch To POS?",
+      text:"You are going to be a Cashier",
+      icon: "warning",
+      buttons: ["Cancel","Yes"],
+      dangerMode: true,
+    })
+    .then((value) => {
+      if(value){
+          window.location.href='ajax.php?action=switch';
+        }
+    })
+  }
+  function switchAdmin(){
+    swal({
+      title: "Switch To Admin?",
+      text:"Hello! Store Manager",
+      icon: "warning",
+      buttons: ["Cancel","Yes"],
+      dangerMode: true,
+    })
+    .then((value) => {
+      if(value){
+          window.location.href='ajax.php?action=admin';
+        }
+    })
+  }
+</script>

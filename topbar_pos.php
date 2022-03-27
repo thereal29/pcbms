@@ -14,6 +14,10 @@
           <!-- <img src="assets/img/vsu.png" alt=""> -->
             <div class="name text-white">CASHIER NAME: <?php echo $row['firstname'].""." "."".$row['lastname']?></div>
         </div>
-        <i class="bx bx-log-out" onclick="out();" id="log_out2" style="cursor: pointer;"></i>
+        <?php if($_SESSION['login_type'] == 2){?>
+          <i class="bx bx-log-out" onclick="out();" id="log_out2" style="cursor: pointer;"></i>
+        <?php }else{?>
+          <i class="fas fa-user-cog" onclick="switchAdmin();" id="log_out2" style="cursor: pointer;"></i>
+        <?php } ?>
     </div>
   <!-- Page -->

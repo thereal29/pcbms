@@ -14,5 +14,15 @@ if($action == 'logout'){
 	if($logout)
 		echo $logout;
 }
+if($action == 'switch'){
+	$switch = $crud->switchPOS();
+	if($switch)
+		echo $switch;
+}
+if($action == 'admin'){
+	$admin = $crud->switchAdmin();
+	if($admin)
+		echo $admin;
+}
 ob_end_flush();
 ?>
