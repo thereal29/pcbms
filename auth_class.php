@@ -27,12 +27,12 @@ Class Action {
 			$user = $_SESSION['username'];
             if($row["type_id"] == 2){
                 $login = 2;
-				$insert	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','User $user login')";
+				$insert	= "INSERT INTO dtr (user_id,username,purpose) VALUES('$uid','$user','User $user login')";
  				$logs = mysqli_query($this->db,$insert);
             }
             if($row["type_id"] == 1){
                 $login = 1;
-				$insert	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','Admin $user login')";
+				$insert	= "INSERT INTO dtr (user_id,username,purpose) VALUES('$uid','$user','Admin $user login')";
  				$logs = mysqli_query($this->db,$insert);
             }
 		if($num_row > 0){
@@ -54,12 +54,12 @@ Class Action {
 		$uid = $_SESSION['login_id'];
 		if($_SESSION['login_type'] == 2){
 			$login = 2;
-			$insert	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','User $user logout')";
+			$insert	= "INSERT INTO dtr (user_id,username,purpose) VALUES('$uid','$user','User $user logout')";
 			$logs = mysqli_query($this->db,$insert);
 		}
 		if($_SESSION['login_type'] == 1){
 			$login = 1;
-			$insert	= "INSERT INTO logs (user_id,username,purpose) VALUES('$uid','$user','Admin $user logout')";
+			$insert	= "INSERT INTO dtr (user_id,username,purpose) VALUES('$uid','$user','Admin $user logout')";
 			$logs = mysqli_query($this->db,$insert);
 		}
 		session_destroy();

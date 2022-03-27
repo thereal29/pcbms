@@ -47,8 +47,10 @@ if(isset($_POST['customer'])){
 			$product_clean = mysqli_real_escape_string($conn, $product[$count]);
 			$quantity_clean = mysqli_real_escape_string($conn, $quantity[$count]);
 			if($product_clean != '' && $quantity_clean != '' && $price_clean != '' && $reciept_clean != ''){
-				$query .= "INSERT INTO sales_product(receipt_no,product_code,price,qty) 
-					VALUES('{$reciept_clean}','{$product_clean}','{$price_clean}','{$quantity_clean}')";
+				$query .= "
+				INSERT INTO sales_product(receipt_no,product_code,price,qty) 
+				VALUES($reciept_clean,$product_clean,$price_clean,$quantity_clean);
+				";
 			}
 		} 
 	}else{

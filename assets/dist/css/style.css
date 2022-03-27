@@ -357,7 +357,6 @@ body{
     .sidebar .menu .item{
     position: relative;
     width: 100%;
-    list-style: none;
     margin: 0 0 10px;
     justify-content: center;
     line-height: 50px;
@@ -369,24 +368,19 @@ body{
     .sidebar .menu .item a{
     color: white;
     display: flex;
-    align-items: center;
     text-decoration: none;
     transition: all 0.4s ease;
     border-radius: 12px;
     white-space: nowrap;
     
-    
     }
-    
-    
     .sidebar .menu .item a:hover{
     background: #fff;
     color: #05300e;
     transition: 0.3s ease;
     }
-    
     .sidebar .menu .item i{
-    margin-right: 20px;
+    margin-right: 10px;
     }
     .sidebar .menu .item  a i{
     height: 50px;
@@ -396,7 +390,6 @@ body{
     font-size: 20px;
     text-align: center;
     }
-    
     .sidebar .menu .item a .dropdown{
     opacity: 1;
     }

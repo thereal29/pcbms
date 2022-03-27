@@ -32,9 +32,20 @@
           <a href="./index.php?page=prod_expired" class="<?php if($_GET['page'] == 'prod_expired'){echo 'current';} ?>">Expired Products</a>
         </div>
       </div>
-      <div class="item"><a href="./index.php?page=inventory" class="<?php if($_GET['page'] == 'inventory'){echo 'current';} ?>"><i class="fas fas fa-book"></i>Inventory</a></div>
-      <div class="item"><a href="./index.php?page=sales" class="<?php if($_GET['page'] == 'sales'){echo 'current';} ?>"><i class='bx bx-transfer-alt'></i>Product Sales</a></div>
-      <div class="item"><a href="./index.php?page=logs" class="<?php if($_GET['page'] == 'logs'){echo 'current';} ?>"><i class="fas fa-address-book"></i>Activity Log</a></div>
+      <div class="item">
+        <a class="sub-btn <?php if(($_GET['page'] == 'inventory') || ($_GET['page'] == 'sales')){echo 'current';} ?>"><i class='fas fa-user-check'></i>Sales Management<i class="fas fa-angle-right dropdown"></i></a>
+        <div class="sub-menu">
+          <a href="./index.php?page=inventory" class="<?php if($_GET['page'] == 'inventory'){echo 'current';} ?>">Inventory</a>
+          <a href="./index.php?page=sales" class="<?php if($_GET['page'] == 'sales'){echo 'current';} ?>">Product Sales</a>
+        </div>
+      </div>
+      <div class="item">
+        <a class="sub-btn <?php if(($_GET['page'] == 'time_record') || ($_GET['page'] == 'logs')){echo 'current';} ?>"><i class='fas fa-user-clock'></i>Time Management<i class="fas fa-angle-right dropdown"></i></a>
+        <div class="sub-menu">
+          <a href="./index.php?page=logs" class="<?php if($_GET['page'] == 'logs'){echo 'current';} ?>">Activity Logs</a>
+          <a href="./index.php?page=time_record" class="<?php if($_GET['page'] == 'time_record'){echo 'current';} ?>">Daily Time Record</a>
+        </div>
+      </div>
       <div class="item">
         <a href="./index.php?page=accounts" class="sub-btn <?php if(($_GET['page'] == 'accounts')){echo 'current';} ?>"><i class='bx bxs-user-account'></i>Accounts</i></a>
       </div>
