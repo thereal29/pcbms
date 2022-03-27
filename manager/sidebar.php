@@ -33,10 +33,10 @@
         </div>
       </div>
       <div class="item">
-        <a class="sub-btn <?php if(($_GET['page'] == 'inventory') || ($_GET['page'] == 'sales')){echo 'current';} ?>"><i class='fas fa-user-check'></i>Sales Management<i class="fas fa-angle-right dropdown"></i></a>
+        <a class="sub-btn <?php if(($_GET['page'] == 'inventory') || ($_GET['page'] == 'sales') || ($_GET['page'] == 'receipt_details')){echo 'current';} ?>"><i class='fas fa-user-check'></i>Sales Management<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
           <a href="./index.php?page=inventory" class="<?php if($_GET['page'] == 'inventory'){echo 'current';} ?>">Inventory</a>
-          <a href="./index.php?page=sales" class="<?php if($_GET['page'] == 'sales'){echo 'current';} ?>">Product Sales</a>
+          <a href="./index.php?page=sales" class="<?php if(($_GET['page'] == 'sales') || ($_GET['page'] == 'receipt_details')){echo 'current';} ?>">Product Sales</a>
         </div>
       </div>
       <div class="item">

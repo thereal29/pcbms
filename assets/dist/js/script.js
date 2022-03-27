@@ -234,6 +234,31 @@ function out(){
         }
     })
 };
+setInterval(function(){
+	total();
+}, 500);
+
+function total(){
+	$(document).ready(function(){
+		var discount = 0;
+		var sales = 0;
+
+			$('#datatableid tbody tr td:nth-child(4)').each(function(){
+				discount += parseInt($(this).text());
+			});
+
+			$('#datatableid tbody tr td:nth-child(5)').each(function(){
+				sales += parseFloat($(this).text().replace(/,/g, "").replace("₱",""));
+			});
+
+		$('#datatableid tfoot #discount').text(discount+'%');
+		$('#datatableid tfoot #sales').text(formatNumber(sales));
+	});
+}
+
+function formatNumber(num){
+	return '₱' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '1,')
+}
 // function del(){
 //   var lag = "delete";
 //   swal({
