@@ -57,6 +57,10 @@
                                     <label class="col-xs-5 control-label" for="hireddate">Date of Stock</label>  
                                     <input type="date" id="stockdate" name="stockdate" class="form-control" value="<?php echo $fetch['date_stock_in']?>" required>
                                 </div>
+                                <div class="form-group col-md-4">
+                                    <label class="col-xs-5 control-label" for="hireddate">Expiration Date</label>  
+                                    <input type="date" id="exdate" name="exdate" class="form-control" value="<?php echo $fetch['expiry_date']?>" required>
+                                </div>
                             </div>
                         </div>
                         <br>

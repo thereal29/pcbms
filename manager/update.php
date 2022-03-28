@@ -206,8 +206,9 @@ if(isset($_POST['updateInventory']))
     $qty = $_POST['qty_stock'];
     $code = $_POST['pcode'];
     $stdate = $_POST['stockdate'];
+    $exdate= $_POST['exdate'];
         $sql = 'UPDATE product_details p join product_delivery pd on pd.d_code = p.d_code join supplier s on s.supplier_id=pd.supplier_id join product prod on prod.product_id=p.product_id 
-        set prod.product_name="'.$pname.'", p.selling_unit_price="'.$sprice.'", p.product_code = "'.$code.'", prod.unit ="'.$unit.'", pd.supplier_id ="'.$supp.'", p.quantity_stock = "'.$qty.'", p.date_stock_in="'.$stdate.'" WHERE p.item_id ="'.$id.'"';
+        set prod.product_name="'.$pname.'", p.selling_unit_price="'.$sprice.'", p.product_code = "'.$code.'", prod.unit ="'.$unit.'", pd.supplier_id ="'.$supp.'", p.quantity_stock = "'.$qty.'", p.expiry_date = "'.$exdate.'" ,p.date_stock_in="'.$stdate.'" WHERE p.item_id ="'.$id.'"';
         if (mysqli_query($conn, $sql)) {
             $query1 	= "INSERT INTO logs (user_id,username,purpose) VALUES('$user_id','$user','Updated the inventory data of $pname')";
             $insert 	= mysqli_query($conn,$query1);

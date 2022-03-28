@@ -20,7 +20,7 @@
                 <tbody id="row_data">  
                 <?php
                         $i = 1;
-                        $query = mysqli_query($conn, "SELECT item_id, pd.d_code, p.product_code, prod.product_name, prod.unit, selling_unit_price, expiry_date, quantity_stock, s.company_name, pd.del_date, p.date_stock_in, pd.status, pd.supplier_id FROM product_details p join product_delivery pd on pd.d_code = p.d_code join supplier s on s.supplier_id=pd.supplier_id join product prod on prod.product_id=p.product_id where pd.status = 'Delivered' group by item_id") or die(mysqli_error());
+                        $query = mysqli_query($conn, "SELECT item_id, pd.d_code, p.product_code, prod.product_name, prod.unit, selling_unit_price, expiry_date, quantity_stock, s.company_name, pd.del_date, p.date_stock_in, pd.status, pd.supplier_id FROM product_details p join product_delivery pd on pd.d_code = p.d_code join supplier s on s.supplier_id=pd.supplier_id join product prod on prod.product_id=p.product_id where pd.status = 'Delivered' and p.expiry_date > NOW() group by item_id") or die(mysqli_error());
                         while($fetch = mysqli_fetch_array($query)){
                     ?>
                     <tr>
