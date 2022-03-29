@@ -57,18 +57,6 @@
                 <div class="col-sm-6">
                     <div class="small-box shadow-sm border">
                     <div class="inner">
-                        <h3><?php echo $conn->query("SELECT * FROM users WHERE username != '' OR password != ''")->num_rows; ?></h3>
-
-                        <p>Total Registered Accounts</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="small-box shadow-sm border">
-                    <div class="inner">
                     <?php $result =  mysqli_query($conn,"SELECT sum(qty) FROM sales_product");
                     while ($row = mysqli_fetch_array($result)) {
                         if(mysqli_num_rows($result) != 0 && $row[0] != Null){
@@ -91,6 +79,32 @@
                     </div>
                     </div>
                 </div>
+                <div class="col-sm-6">
+                    <div class="small-box shadow-sm border">
+                    <div class="inner">
+                        <h3><?php echo $conn->query("SELECT * FROM product_delivery pd join product_details p on pd.d_code = p.d_code WHERE expiry_date < NOW()")->num_rows; ?></h3>
+
+                        <p>Total Expired Products</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-calendar-times"></i>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-sm-6">
+                    <div class="small-box shadow-sm border">
+                    <div class="inner">
+                        <h3><?php echo $conn->query("SELECT * FROM users WHERE username != '' OR password != ''")->num_rows; ?></h3>
+
+                        <p>Total Registered Accounts</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -108,7 +122,43 @@
                                         <div class="panel-body">
                                             <div class="list-group">
                                                 <?php 
-                                                    $query = "SELECT prod.product_name, p.quantity_stock, prod.unit FROM product prod join product_details p on p.product_id=prod.product_id join product_delivery pd on pd.d_code = p.d_code where pd.status = 'Delivered' group by prod.product_id order by p.date_stock_in  DESC LIMIT 10";
+                                                    $query = "SELECT prod.product_name, p.quantity_stock, prod.unit FROM product prod join product_details p on p.product_id=prod.product_id join product_delivery pd on pd.d_code = p.d_code where pd.status = 'Delivered'  and p.expiry_date > NOW() group by prod.product_id order by p.date_stock_in  DESC LIMIT 10";
+                                                    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                        if( $row['quantity_stock'] > 1)
+                                                        { $s='s';
+                                                        }else{ $s='';}
+                                                        echo "<div class='list-group-item list-group-item-success text-gray-800'>
+                                                            <i class='fas fa-barcode'></i> ".$row['product_name']."
+                                                            <small>(".$row['quantity_stock']." ".$row['unit']."".$s.")</small>
+                                                            </div>";
+                                                    }
+                                                ?>
+                                            </div>
+                                        <!-- /.list-group -->
+                                        </div>
+                                    <!-- /.panel-body -->
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-12">
+            <!-- RECENT PRODUCTS -->
+                <div class="card_b shadow h-100">
+                    <div class="card-header">
+                        <strong><i class="bx bx-data"></i>   Recent Expired Products</strong>
+                    </div>
+                    <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <div class="h6 mb-0 mr-0 text-gray-800">
+                                    <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="list-group">
+                                                <?php 
+                                                    $query = "SELECT prod.product_name, p.quantity_stock, prod.unit FROM product prod join product_details p on p.product_id=prod.product_id join product_delivery pd on pd.d_code = p.d_code where pd.status = 'Delivered' and p.expiry_date < NOW() group by prod.product_id order by p.date_stock_in  DESC LIMIT 10";
                                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                                                     while ($row = mysqli_fetch_array($result)) {
                                                         if( $row['quantity_stock'] > 1)
