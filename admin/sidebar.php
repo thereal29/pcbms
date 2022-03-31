@@ -8,7 +8,7 @@
     </div>
     <div class="logo_content">
       <div class="logo">
-        <div class="logo_name">Store Management
+        <div class="logo_name">Store Administration
         </div>
       </div>
     </div>
@@ -39,6 +39,18 @@
           <a href="./index.php?page=sales" class="<?php if(($_GET['page'] == 'sales') || ($_GET['page'] == 'receipt_details')){echo 'current';} ?>">Product Sales</a>
         </div>
       </div>
+      <div class="item">
+        <a class="sub-btn <?php if(($_GET['page'] == 'time_record') || ($_GET['page'] == 'logs')){echo 'current';} ?>"><i class='fas fa-user-clock'></i>Time Management<i class="fas fa-angle-right dropdown"></i></a>
+        <div class="sub-menu">
+          <a href="./index.php?page=logs" class="<?php if($_GET['page'] == 'logs'){echo 'current';} ?>">Activity Logs</a>
+          <a href="./index.php?page=time_record" class="<?php if($_GET['page'] == 'time_record'){echo 'current';} ?>">Daily Time Record</a>
+        </div>
+      </div>
+      <div class="item">
+        <a href="./index.php?page=accounts" class="sub-btn <?php if(($_GET['page'] == 'accounts')){echo 'current';} ?>"><i class='bx bxs-user-account'></i>Accounts</i></a>
+      </div>
+      <div class="item">
+      </div>
     </div>
     <div class="profile_content">
       <div class="profile">
@@ -46,7 +58,7 @@
           <img src="assets/img/vsu.png" alt="">
           <div class="name_grade">
             <div class="name ml-2"><?php echo $row['firstname'].""." "."".$row['lastname']?></div>
-            <div class="job_role ml-2">Store Manager</div>
+            <div class="job_role ml-2">Admin/Store Owner</div>
           </div>
         </div>
         <button id="buttons" name="logout" type="button" onclick="out();" class="logout btn btn-danger border mr-2"><i class="bx bx-log-out" id="log_out"></i></button>

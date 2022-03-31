@@ -5,9 +5,9 @@
                 <div class="col-sm-6">
                     <div class="small-box shadow-sm border">
                     <div class="inner">
-                        <h3><?php echo $conn->query("SELECT * FROM employee WHERE job_id = 2")->num_rows; ?></h3>
+                        <h3><?php echo $conn->query("SELECT * FROM employee ")->num_rows; ?></h3>
 
-                        <p>Total Cashier</p>
+                        <p>Total Employees</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-user-tie"></i>
@@ -88,6 +88,20 @@
                     </div>
                     <div class="icon">
                         <i class="fas fa-calendar-times"></i>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-sm-6">
+                    <div class="small-box shadow-sm border">
+                    <div class="inner">
+                        <h3><?php echo $conn->query("SELECT * FROM users WHERE username != '' OR password != ''")->num_rows; ?></h3>
+
+                        <p>Total Registered Accounts</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
                     </div>
                     </div>
                 </div>

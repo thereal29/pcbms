@@ -1,5 +1,5 @@
     <!-- Footer -->
-    <?php if($_SESSION['login_view_folder'] == 'manager/'):?>
+    <?php if($_SESSION['login_view_folder'] != 'cashier/'):?>
       <footer class="footer">
         <div class="foot_container">
           <span class="text-muted">VSU Pasalubong Center Business Management System </span>
@@ -167,8 +167,14 @@ window.onload = function() {
   }
   function switchAdmin(){
     swal({
-      title: "Switch To Admin?",
-      text:"Hello! Store Manager",
+      <?php if($_SESSION['login_type']  == 1){?>
+        title: "Switch To Manager?",
+        text:"Hello! Store Manager",
+      <?php } ?>
+      <?php if($_SESSION['login_type']  == 3){?>
+        title: "Switch To Admin?",
+        text:"Hello! Store Admin",
+      <?php } ?>
       icon: "warning",
       buttons: ["Cancel","Yes"],
       dangerMode: true,

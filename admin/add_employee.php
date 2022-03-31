@@ -43,8 +43,9 @@
                                     <div class="col-xs-4">
                                         <select class='form-control' name='jobs' required>
                                             <?php
-                                                $sql = "SELECT job_title, job_id FROM job WHERE job_title = 'Cashier' order by job_id asc";
+                                                $sql = "SELECT DISTINCT job_title, job_id FROM job order by job_id asc";
                                                 $result = mysqli_query($conn, $sql) or die ("Bad SQL: $sql");
+                                                echo "<option disable selected hidden value=''>Select Job</option>";
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                 echo "<option value='".$row['job_id']."'>".$row['job_title']."</option>";
                                                 }

@@ -13,7 +13,7 @@
   include 'header.php'  
   
 ?>
-<?php if($_SESSION['login_view_folder'] == 'manager/'){?>
+<?php if($_SESSION['login_view_folder'] != 'cashier/'){?>
     <?php ob_start(); ?>
     <?php include $_SESSION['login_view_folder'].'sidebar.php' ?>
     <?php include 'topbar.php' ?>
