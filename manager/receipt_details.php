@@ -16,7 +16,7 @@
                 </thead>
                 <tbody id="row_data">  
                 <?php
-                    $query = mysqli_query($conn, "SELECT sp.receipt_no, sp.product_code, c.firstname as c_firstname, c.lastname as c_lastname,e.firstname as e_firstname ,e.lastname as e_lastname, total, prod.product_name, date, discount, qty, sp.price, prod.unit FROM sales s join customer c on c.cust_id = s.cust_id join employee e on e.employee_id=s.employee_id join sales_product sp on sp.receipt_no = s.receipt_no join product_details pd on pd.product_code = sp.product_code join product prod on prod.product_id = pd.product_id where sp.receipt_no = '".$_GET['id']."'") or die(mysqli_error());
+                    $query = mysqli_query($conn, "SELECT sp.product_code, p.product_name , p.unit, sp.qty, sp.price FROM product p join product_details pd on p.product_id = pd.product_id join sales_product sp where sp.receipt_no = '".$_GET['id']."'") or die(mysqli_error());
                     while($fetch = mysqli_fetch_array($query)){
                 ?>
                 <tr>
